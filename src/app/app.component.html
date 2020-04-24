@@ -2,12 +2,12 @@
 <app-header></app-header>
 <main class="container">
 	<!-- Liste des collègues -->
-	<div class="col-xs-12 col-sm-6 col-md-6">
+	<div class="col-xs-6 col-sm-6 col-md-6">
 		<app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
 	</div>
 
 	<!-- un collegue tout seul -->
-	<div class="col-xs-12 col-sm-6 col-md-6">
+	<div class="col-xs-6 col-sm-6 col-md-6">
 		<h2><u>{{unObjetCollegueFourni.nom}} {{unObjetCollegueFourni.prenom}}</u></h2>
 		<app-collegue [col]="unObjetCollegueFourni"></app-collegue>
 	</div>

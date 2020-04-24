@@ -6,5 +6,5 @@
 	<app-collegue [col]="collegue"></app-collegue>
 </div> -->
 <div *ngFor="let collegue of unObjetListeDeCollegues">
-	<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.prenom}} - {{collegue.email}}</p>
+	<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.dateDeNaissance | date:'dd/MM/yyyy'}} - {{collegue.email}}</p>
 </div>
