@@ -17,6 +17,8 @@
 						<i class="glyphicon glyphicon-pushpin"></i>
 						<label> Matricule :</label>
 						{{col.matricule}}
+						{{message}}
+						{{message2}}
 						<br />
 
 						<i class="glyphicon glyphicon-user"></i>
@@ -41,7 +43,9 @@
 						
                         <!-- Split button -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary"> Creer un nouveau collegue </button>
+							<button (click)="ajouter()" type="button" class="btn btn-primary" > Creer un nouveau collegue </button>
+							<button (click)="modifier()" type="button" class="btn btn-primary"> Modifier </button>
+							<button (click)="unSuperTest()" type="button" class="btn btn-primary"> Teste </button>
                         </div>
                     </div>
                 </div>
