@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Collegue } from './models/collegue';
+import {collegues_mock} from './mock/collegues.mock';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'collegues-front';
+
+  collegue = new collegues_mock()
+  unObjetCollegueFourni = {
+    matricule: this.collegue.col.matricule,
+    nom: this.collegue.col.nom,
+    prenom: this.collegue.col.prenom,
+    email: this.collegue.col.email,
+    dateDeNaissance: this.collegue.col.dateDeNaissance,
+    photoUrl: this.collegue.col.photoUrl,
+  }
 }
