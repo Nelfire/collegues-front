@@ -10,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CollegueComponent implements OnInit {
   
   @Input() col: Collegue;
+  mode:string = 'creation';
 
   constructor() {
   }
@@ -19,14 +20,13 @@ export class CollegueComponent implements OnInit {
 
   ajouter(){
     console.log("Ajouter collegue");
+    this.mode = 'creation';
   }
 
   modifier(){
     console.log("Modifier collegue");
+    this.mode = 'modification';
   }
 
-  unSuperTest() {
-    console.log("esjfjes");
-  }
 
 }

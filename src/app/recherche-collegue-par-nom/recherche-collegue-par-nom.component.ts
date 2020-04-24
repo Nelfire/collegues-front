@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
@@ -7,12 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RechercheCollegueParNomComponent implements OnInit {
 
+  unObjetListeDeCollegues = uneSuperListeDeCollegues;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  valide() {
-    console.log("Validation ok ");
-  }
 }
