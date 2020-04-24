@@ -8,28 +8,28 @@
 				<div class="col-sm-6 col-md-8">
 
 					<i class="glyphicon glyphicon-pushpin"></i>
-					<label> Matricule :</label>
+					<label> <b>Matricule : </b></label>
 					{{col.matricule}}
 					<br />
 
 
 					<i class="bi bi-alarm-fill"></i>
-					<label> Nom :</label>
+					<label> <b>Nom :</b></label>
 					{{col.nom}}
 					<br />
 
 					<i class="glyphicon glyphicon-user"></i>
-					<label> Prenom :</label>
+					<label> <b>Prenom :</b></label>
 					{{col.prenom}}
 					<br />
 
 					<i class="glyphicon glyphicon-hourglass"></i>
-					<label> Date de naissance :</label>
+					<label> <b>Date de naissance :</b></label>
 					{{col.dateDeNaissance | date:'dd/MM/yyyy'}}
 					<br />
 
 					<i class="glyphicon glyphicon-envelope"></i>
-					<label> Email :</label>
+					<label> <b>Email :</b></label>
 					<ng-container *ngIf="mode == 'creation'; else blocModificationEmail">
 						{{col.email}}
 					</ng-container>
@@ -39,7 +39,7 @@
 					<br />
 
 					<i class="glyphicon glyphicon-envelope"></i>
-					<label> Photo URL :</label>
+					<label> <b>Photo URL :</b></label>
 					<ng-container *ngIf="mode == 'creation'; else blocModificationPhoto">
 						{{col.photoUrl}}
 					</ng-container>
