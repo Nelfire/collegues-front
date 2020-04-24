@@ -10,10 +10,6 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CollegueComponent implements OnInit {
   
   @Input() col: Collegue;
-  @Input() message3: string;
-
-  message = 'Bonjour';
-  message2 = 'Test';
 
   constructor() {
   }
