@@ -2,6 +2,13 @@ import { Collegue } from '../models/Collegue';
 
 export const uneSuperListeDeCollegues = [
 	new Collegue(
+	'DROORLSKI3',
+	'GIRARD',
+	'Vincent',
+	'girvincent@gmail.com',
+	new Date('1993-06-01'),
+	'https://pbs.twimg.com/media/EKsIrvvXsAUVshP.jpg'),
+	new Collegue(
 	'F475D8E92D',
 	'BRUNET',
 	'Paul',

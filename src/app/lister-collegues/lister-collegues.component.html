@@ -1,0 +1,10 @@
+	<!-- Liste des collègues -->
+	<ul class="list-group">
+		<app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
+	</ul>
+
+	<!-- un collegue tout seul -->
+	<div class="col-xs-6 col-sm-6 col-md-6 justify-content-center" style="background-color: #e0e0e0d4;border-radius: 4%; padding: 20px;">
+		<h2><u>{{unObjetCollegueFourni.nom}} {{unObjetCollegueFourni.prenom}}</u></h2>
+		<app-collegue [col]="unObjetCollegueFourni"></app-collegue>
+	</div>

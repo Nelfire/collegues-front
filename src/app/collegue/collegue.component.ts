@@ -17,16 +17,13 @@ export class CollegueComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  ajouter(){
-    console.log("Ajouter collegue");
+  
+  ajouter() {
     this.mode = 'creation';
   }
 
-  modifier(){
-    console.log("Modifier collegue");
+  modifier() {
     this.mode = 'modification';
   }
-
 
 }

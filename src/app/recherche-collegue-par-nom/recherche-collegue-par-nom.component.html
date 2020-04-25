@@ -1,10 +1,9 @@
-<label><b>Recherche par noms :  </b></label> 
-<input type="text">
-<button class="btn btn-success">Rechercher</button>
-<!-- <div *ngFor="let collegue of unObjetListeDeCollegues">
-	<h2>{{collegue.nom}} {{collegue.prenom}}</h2>
-	<app-collegue [col]="collegue"></app-collegue>
-</div> -->
-<div *ngFor="let collegue of unObjetListeDeCollegues">
-	<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.dateDeNaissance | date:'dd/MM/yyyy'}} - {{collegue.email}}</p>
+<div>
+	<label><b>Recherche par noms :</b></label> 
+	<input type="text" class="form-control">
+	<button class="btn btn-success">Rechercher</button>
 </div>
+
+<li class="list-group-item" *ngFor="let collegue of unObjetListeDeCollegues">
+	<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.dateDeNaissance | date:'dd/MM/yyyy'}} - {{collegue.email}}</p>
+</li>

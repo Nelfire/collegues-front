@@ -6,19 +6,28 @@ import { CollegueComponent } from './collegue/collegue.component';
 import { RechercheCollegueParNomComponent } from './recherche-collegue-par-nom/recherche-collegue-par-nom.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import {Routes,RouterModule} from '@angular/router';
+import { ListerColleguesComponent } from './lister-collegues/lister-collegues.component';
 
+const appRoute: Routes = [
+  {path: 'listerCollegues', component: ListerColleguesComponent},
+  {path: '', component: ListerColleguesComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
     CollegueComponent,
     RechercheCollegueParNomComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ListerColleguesComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(appRoute)
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
