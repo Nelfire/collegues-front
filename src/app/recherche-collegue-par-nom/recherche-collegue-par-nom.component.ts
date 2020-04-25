@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
 
 @Component({
@@ -8,10 +8,18 @@ import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
 })
 export class RechercheCollegueParNomComponent implements OnInit {
 
+  @Input() rechercheEnCours:boolean = false;
   unObjetListeDeCollegues = uneSuperListeDeCollegues;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  rechercher() {
+    this.rechercheEnCours = true;
+  }
+  masquer() {
+    this.rechercheEnCours = false;
+  }
 }

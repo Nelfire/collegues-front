@@ -1,9 +1,12 @@
 <div>
 	<label><b>Recherche par noms :</b></label> 
 	<input type="text" class="form-control">
-	<button class="btn btn-success">Rechercher</button>
+	<button class="btn btn-success" (click)="rechercher()" [disabled]="rechercheEnCours">Rechercher</button>
+	<button class="btn btn-success" (click)="masquer()" [disabled]="!rechercheEnCours">Masquer</button>
 </div>
 
-<li class="list-group-item" *ngFor="let collegue of unObjetListeDeCollegues">
-	<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.dateDeNaissance | date:'dd/MM/yyyy'}} - {{collegue.email}}</p>
-</li>
+<ng-container *ngIf="rechercheEnCours==true">
+	<li class="list-group-item" *ngFor="let collegue of unObjetListeDeCollegues">
+		<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.dateDeNaissance | date:'dd/MM/yyyy'}} - {{collegue.email}}</p>
+	</li>
+</ng-container>

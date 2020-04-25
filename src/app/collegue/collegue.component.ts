@@ -8,8 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./collegue.component.css']
 })
 export class CollegueComponent implements OnInit {
-  
   @Input() col: Collegue;
+  messageValidation:string = '';
   mode:string = 'creation';
 
   constructor() {
@@ -18,8 +18,14 @@ export class CollegueComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  ajouter() {
+  valider() {
     this.mode = 'creation';
+    this.messageValidation = 'Modifications enregistrees :-)';
+    
+    //Disparition du message de validation au bout de 2 secondes
+    setTimeout(() => {
+      this.messageValidation = '';
+    },2000)
   }
 
   modifier() {
