@@ -11,7 +11,7 @@ import { ListerColleguesComponent } from './lister-collegues/lister-collegues.co
 import { DataService } from './services/data.service';
 
 const appRoute: Routes = [
-  {path: 'listerCollegues', component: ListerColleguesComponent},
+  {path: '/listerCollegues', component: ListerColleguesComponent},
   {path: '', component: ListerColleguesComponent}
 ]
 @NgModule({
