@@ -7,6 +7,7 @@
 
 <ng-container *ngIf="rechercheEnCours==true">
 	<li class="list-group-item" *ngFor="let collegue of unObjetListeDeCollegues">
+		<img style="width: 50px;height: 50px;" src="{{collegue.photoUrl}}" alt="" class="rounded img-fluid" />
 		<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.dateDeNaissance | date:'dd/MM/yyyy'}} - {{collegue.email}}</p>
 	</li>
 </ng-container>
