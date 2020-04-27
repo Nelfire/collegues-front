@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Collegue } from '../models/Collegue';
+import { unSuperCollegue } from '../mock/collegues.mock';
+import { uneSuperListeDeCollegues } from '../mock/matricules.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -6,10 +9,18 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   constructor() { }
-  // rechercherParNom(nom: string): string[] {
-  // // TODO retourner une liste de matricules fictifs à partir du fichier `src/app/mock/matricules.mock.ts`.
-  // }
-  // recupererCollegueCourant(): Collegue {
-  // // TODO retourner le collègue fictif à partir du fichier `src/app/mock/collegues.mock.ts`.
-  // }
+
+  rechercherParNom(nomRecherche: string): Collegue[] {
+    // const listeMatricules: Collegue[] = [];
+    // uneSuperListeDeCollegues.forEach(collegue => {
+    //   if (collegue.nom === nomRecherche) {
+    //     listeMatricules.push(collegue);
+    //   }
+    // });
+    // return listeMatricules;
+    return uneSuperListeDeCollegues;
+  }
+  recupererCollegueCourant(): Collegue {
+    return unSuperCollegue;
+  }
 }

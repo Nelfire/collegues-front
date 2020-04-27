@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
+import { Component, OnInit} from '@angular/core';
+import { DataService } from '../services/data.service';
+import { Collegue } from '../models/Collegue';
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
@@ -8,17 +9,19 @@ import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
 })
 export class RechercheCollegueParNomComponent implements OnInit {
 
-  rechercheEnCours:boolean = false;
-  unObjetListeDeCollegues = uneSuperListeDeCollegues;
-  constructor() { }
+  rechercheEnCours: boolean = false;
+  unObjetListeDeCollegues: Collegue[];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
-
-  rechercher() {
+  rechercher(nomSaisi: string) {
     this.rechercheEnCours = true;
+    this.unObjetListeDeCollegues = this.dataService.rechercherParNom(nomSaisi);
   }
+  
   masquer() {
     this.rechercheEnCours = false;
   }

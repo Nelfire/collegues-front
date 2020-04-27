@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {unSuperCollegue} from '../mock/collegues.mock';
-import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
+import { DataService } from '../services/data.service';
+import { Collegue } from '../models/Collegue';
 @Component({
   selector: 'app-lister-collegues',
   templateUrl: './lister-collegues.component.html',
@@ -8,12 +8,12 @@ import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
 })
 export class ListerColleguesComponent implements OnInit {
 
-  unObjetCollegueFourni = unSuperCollegue;
-  unObjetListeDeCollegues = uneSuperListeDeCollegues;
+  unObjetCollegueFourni: Collegue;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.unObjetCollegueFourni = this.dataService.recupererCollegueCourant();
   }
 
 }

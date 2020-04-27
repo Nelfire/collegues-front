@@ -1,7 +1,7 @@
 <div>
 	<label><b>Recherche par noms :</b></label> 
-	<input type="text" class="form-control">
-	<button class="btn btn-success" (click)="rechercher()" [disabled]="rechercheEnCours">Rechercher</button>
+	<input type="text" class="form-control" #saisie>
+	<button class="btn btn-success" (click)="rechercher(saisie.value)" [disabled]="rechercheEnCours">Rechercher</button>
 	<button class="btn btn-success" (click)="masquer()" [disabled]="!rechercheEnCours">Masquer</button>
 </div>
 
