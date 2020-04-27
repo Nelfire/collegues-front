@@ -1,6 +1,6 @@
 <div>
 	<label><b>Recherche par noms :</b></label> 
-	<input type="text" class="form-control" #saisie>
+	<input type="text" class="form-control" #saisie placeholder="Ex: M01">
 	<button class="btn btn-success" (click)="rechercher(saisie.value)">Rechercher</button>
 	<button class="btn btn-success" (click)="masquer()" [disabled]="!rechercheEnCours">Masquer</button>
 </div>
@@ -15,7 +15,4 @@
 	</li>
 </ng-container>
 
-<!-- <ul>
-	<li *ngFor="let a of listeMatricules">{{a}}</li>
-</ul> -->
 {{msgErreur}}
