@@ -1,5 +1,6 @@
 import { Collegue } from '../models/Collegue';
 import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-collegue',
@@ -11,10 +12,13 @@ export class CollegueComponent implements OnInit {
   messageValidation: string = '';
   mode: string = 'creation';
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit(): void {
+
+    this.dataService.abonnementCollegueEnCours()
+    .subscribe(collegueSelect => this.col = collegueSelect)
   }
 
   valider() {
@@ -30,5 +34,5 @@ export class CollegueComponent implements OnInit {
   modifier() {
     this.mode = 'modification';
   }
-
+ 
 }

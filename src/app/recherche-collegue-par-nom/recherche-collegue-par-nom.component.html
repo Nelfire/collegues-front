@@ -1,13 +1,21 @@
 <div>
 	<label><b>Recherche par noms :</b></label> 
 	<input type="text" class="form-control" #saisie>
-	<button class="btn btn-success" (click)="rechercher(saisie.value)" [disabled]="rechercheEnCours">Rechercher</button>
+	<button class="btn btn-success" (click)="rechercher(saisie.value)">Rechercher</button>
 	<button class="btn btn-success" (click)="masquer()" [disabled]="!rechercheEnCours">Masquer</button>
 </div>
 
 <ng-container *ngIf="rechercheEnCours==true">
-	<li class="list-group-item" *ngFor="let collegue of unObjetListeDeCollegues">
+	<!-- <li class="list-group-item" *ngFor="let collegue of collegues" (click)="selectionnerCollegue(collegue)">
 		<img style="width: 50px;height: 50px;" src="{{collegue.photoUrl}}" alt="" class="rounded img-fluid" />
 		<p>{{collegue.matricule}} - {{collegue.nom}} - {{collegue.prenom}} - {{collegue.dateDeNaissance | date:'dd/MM/yyyy'}} - {{collegue.email}}</p>
+	</li> -->
+		<li class="list-group-item" *ngFor="let matricule of listeMatricules" (click)="selectionnerCollegue(matricule)">
+		<p>{{matricule}}</p>
 	</li>
 </ng-container>
+
+<!-- <ul>
+	<li *ngFor="let a of listeMatricules">{{a}}</li>
+</ul> -->
+{{msgErreur}}

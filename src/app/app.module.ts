@@ -9,7 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import {Routes,RouterModule} from '@angular/router';
 import { ListerColleguesComponent } from './lister-collegues/lister-collegues.component';
 import { DataService } from './services/data.service';
-
+import { HttpClientModule } from '@angular/common/http'; 
 const appRoute: Routes = [
   {path: 'listerCollegues', component: ListerColleguesComponent},
   {path: '', component: ListerColleguesComponent}
@@ -25,7 +25,8 @@ const appRoute: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoute)
+    RouterModule.forRoot(appRoute),
+    HttpClientModule
   ],
   providers: [
     DataService

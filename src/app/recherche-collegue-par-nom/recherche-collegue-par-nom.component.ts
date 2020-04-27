@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Collegue } from '../models/Collegue';
 
@@ -9,20 +9,37 @@ import { Collegue } from '../models/Collegue';
 })
 export class RechercheCollegueParNomComponent implements OnInit {
 
+  /* ajout demo */
+  collegues: Collegue[];
+  msgErreur: string;
+  /* ajout demo */
+
+  listeMatricules = [];
+
   rechercheEnCours: boolean = false;
   unObjetListeDeCollegues: Collegue[];
 
   constructor(private dataService: DataService) { }
 
+
   ngOnInit(): void {
   }
 
+
   rechercher(nomSaisi: string) {
     this.rechercheEnCours = true;
-    this.unObjetListeDeCollegues = this.dataService.rechercherParNom(nomSaisi);
+    this.dataService.rechercherParNom(nomSaisi)
+      .subscribe(
+        mats => this.listeMatricules = mats,
+        err => {}
+      );
   }
-  
+
   masquer() {
     this.rechercheEnCours = false;
+  }
+
+  selectionnerCollegue(col: Collegue) {
+    this.dataService.selCollegue(col);
   }
 }
