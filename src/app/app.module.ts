@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {Routes,RouterModule} from '@angular/router';
 import { ListerColleguesComponent } from './lister-collegues/lister-collegues.component';
+import { DataService } from './services/data.service';
 
 const appRoute: Routes = [
   {path: 'listerCollegues', component: ListerColleguesComponent},
@@ -27,6 +28,7 @@ const appRoute: Routes = [
     RouterModule.forRoot(appRoute)
   ],
   providers: [
+    DataService
   ],
   bootstrap: [AppComponent]
 })

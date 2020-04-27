@@ -8,7 +8,7 @@ import {uneSuperListeDeCollegues} from '../mock/matricules.mock';
 })
 export class RechercheCollegueParNomComponent implements OnInit {
 
-  @Input() rechercheEnCours:boolean = false;
+  rechercheEnCours:boolean = false;
   unObjetListeDeCollegues = uneSuperListeDeCollegues;
   constructor() { }
 
