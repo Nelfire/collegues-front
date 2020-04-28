@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
-import { unSuperCollegue } from '../mock/collegues.mock';
 import { HttpClient } from '@angular/common/http';
-import { Observable, interval, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../environment';
 
 @Injectable({
@@ -15,20 +14,20 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-
   abonnementCollegueEnCours(): Observable<Collegue> {
     return this.subCollegueEnCours.asObservable();
   }
 
-  selCollegue(col: Collegue) {
-    this.subCollegueEnCours.next(col);
+
+  rechercherParNom(nomRecherche: string): Observable<string[]> {
+    return this.http.get<string[]>(`https://digicapi.herokuapp.com/collegues?nom=${nomRecherche}`);
   }
 
-  rechercherParNom(nomRecherche: string): Observable<String[]> {
-    return this.http.get<String[]>(`https://digicapi.herokuapp.com/collegues?nom=${nomRecherche}`);
+
+    recupererCollegueCourant(matriculeCollegue: string) {
+    this.http.get<Collegue>(`https://digicapi.herokuapp.com/collegues/${matriculeCollegue}`).subscribe(collegue => {
+      this.subCollegueEnCours.next(collegue);
+    });
   }
-  
-  recupererCollegueCourant(): Collegue {
-    return unSuperCollegue;
-  }
+
 }

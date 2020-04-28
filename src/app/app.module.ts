@@ -9,11 +9,13 @@ import { FooterComponent } from './footer/footer.component';
 import {Routes,RouterModule} from '@angular/router';
 import { ListerColleguesComponent } from './lister-collegues/lister-collegues.component';
 import { DataService } from './services/data.service';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+
 const appRoute: Routes = [
   {path: 'listerCollegues', component: ListerColleguesComponent},
   {path: '', component: ListerColleguesComponent}
 ]
+
 @NgModule({
   declarations: [
     AppComponent,

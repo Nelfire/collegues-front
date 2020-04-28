@@ -1,26 +1,34 @@
 import { Collegue } from '../models/Collegue';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-collegue',
   templateUrl: './collegue.component.html',
   styleUrls: ['./collegue.component.css']
 })
-export class CollegueComponent implements OnInit {
-  @Input() col: Collegue;
-  messageValidation: string = '';
-  mode: string = 'creation';
+export class CollegueComponent implements OnInit, OnDestroy {
+  col: Collegue;
+  messageValidation = '';
+  mode = 'creation';
+  afficheComponent = false;
+
+  //Création d'une Subscription pour pouvoir la détruire à la fin
+  collegueSubscription: Subscription;
 
   constructor(private dataService: DataService) {
   }
 
+  // On souscris à l'observable "abonnementCollegueEnCours" et on peuple la variable locale "col" des données récupérées
   ngOnInit(): void {
-
-    this.dataService.abonnementCollegueEnCours()
-    .subscribe(collegueSelect => this.col = collegueSelect)
+    this.collegueSubscription = this.dataService.abonnementCollegueEnCours()
+      .subscribe(collegueSelect => {
+        this.col = collegueSelect
+      })
   }
 
+  // Bouton "valider" changement formulaire (inutile pour le moment)
   valider() {
     this.mode = 'creation';
     this.messageValidation = 'Modifications enregistrees :-)';
@@ -31,8 +39,14 @@ export class CollegueComponent implements OnInit {
     }, 2000)
   }
 
+  // Bouton "modifier" changement formulaire (inutile pour le moment)
   modifier() {
     this.mode = 'modification';
   }
- 
+
+  //Destruction de la subscription
+  ngOnDestroy() {
+    this.collegueSubscription.unsubscribe();
+  }
+
 }
