@@ -10,6 +10,8 @@ import {Routes,RouterModule} from '@angular/router';
 import { ListerColleguesComponent } from './lister-collegues/lister-collegues.component';
 import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { FormulaireCollegueComponent } from './collegue/formulaire-collegue/formulaire-collegue.component';
 
 const appRoute: Routes = [
   {path: 'listerCollegues', component: ListerColleguesComponent},
@@ -23,12 +25,14 @@ const appRoute: Routes = [
     RechercheCollegueParNomComponent,
     HeaderComponent,
     FooterComponent,
-    ListerColleguesComponent
+    ListerColleguesComponent,
+    FormulaireCollegueComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoute),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     DataService

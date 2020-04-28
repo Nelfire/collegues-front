@@ -1,14 +1,16 @@
 <div>
 	<label><b>Recherche par noms :</b></label>
-	<input type="text" class="form-control" #saisie placeholder="Ex: M01">
+	<input type="text" class="form-control" #saisie placeholder="Ex: Renard">
 	<button class="btn btn-success" (click)="rechercher(saisie.value)">Rechercher</button>
 	<button class="btn btn-success" (click)="masquer()" [disabled]="!rechercheEnCours">Masquer</button>
 </div>
 
+<div *ngIf="msgErreur" class="alert alert-danger" role="alert">
+	{{msgErreur}}
+</div>
+
 <ng-container *ngIf="rechercheEnCours==true">
-	<li class="list-group-item" *ngFor="let matricule of listeMatricules" (click)="recupererCollegue(matricule)">
+	<li class="list-group-item btn" *ngFor="let matricule of listeMatricules" (click)="recupererCollegue(matricule)">
 		<p>{{matricule}}</p>
 	</li>
 </ng-container>
-
-{{msgErreur}}

@@ -14,6 +14,8 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   // Observable auquel on pourra souscricre dans collegue.component
+  // asObservable pour qu'on ne puisse faire que des abonnements depuis les component,
+  // et non des .next
   abonnementCollegueEnCours(): Observable<Collegue> {
     return this.subCollegueEnCours.asObservable();
   }
@@ -25,12 +27,17 @@ export class DataService {
   }
 
 
-  // On met en place un obserable auquel on souscris, pour retourner les informations du collaborateur, en fonction de son matricule
+  // On met en place un obserable auquel on souscris, pour retourner
+  // les informations du collaborateur, en fonction de son matricule
   recupererCollegueCourant(matriculeCollegue: string) {
     this.http.get<Collegue>(`https://digicapi.herokuapp.com/collegues/${matriculeCollegue}`).subscribe(
       (collegue) => {
-      this.subCollegueEnCours.next(collegue);
-    });
+        this.subCollegueEnCours.next(collegue);
+      });
   }
 
+
+
+  // ajouterCollegue(nom: string, prenoms: string, email: string, dateDeNaissance: Date, photoUrl: string): Observable<Collegue> {
+  // }
 }

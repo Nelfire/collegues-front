@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Collegue } from '../models/Collegue';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
@@ -38,8 +39,13 @@ export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
         // Cas 1 (Valeur de retour)
         (lesMatriculesDeLObservable) => {
           this.listeMatricules = lesMatriculesDeLObservable;
+          if(this.listeMatricules.length === 0) {
+            this.msgErreur = `Erreur matricule renseigne "${nomSaisi}"`;
+          } else {
+            this.msgErreur = '';
+          }
         }, // Cas 2 (Cas erreur)
-        (err) => {
+        (err: HttpErrorResponse) => {
           this.msgErreur = 'Erreur : ' + err;
         }, // Cas 3 (Ok)
         () => {
