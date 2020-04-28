@@ -14,7 +14,7 @@ export class CollegueComponent implements OnInit, OnDestroy {
   mode = 'creation';
   afficheComponent = false;
 
-  //Création d'une Subscription pour pouvoir la détruire à la fin
+  // Création d'une Subscription pour pouvoir la détruire à la fin
   collegueSubscription: Subscription;
 
   constructor(private dataService: DataService) {
@@ -33,7 +33,7 @@ export class CollegueComponent implements OnInit, OnDestroy {
     this.mode = 'creation';
     this.messageValidation = 'Modifications enregistrees :-)';
 
-    //Disparition du message de validation au bout de 2 secondes
+    // Disparition du message de validation au bout de 2 secondes
     setTimeout(() => {
       this.messageValidation = '';
     }, 2000)
@@ -44,7 +44,7 @@ export class CollegueComponent implements OnInit, OnDestroy {
     this.mode = 'modification';
   }
 
-  //Destruction de la subscription
+  // Destruction de la subscription
   ngOnDestroy() {
     this.collegueSubscription.unsubscribe();
   }

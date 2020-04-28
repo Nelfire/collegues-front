@@ -12,17 +12,17 @@ export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
 
   collegues: Collegue[];
 
-  //Message d'erreur affiché en cas d'erreur subscription
+  // Message d'erreur affiché en cas d'erreur subscription
   msgErreur: string;
 
-  //Liste de matricules qu'on va remplir avec la subscription
+  // Liste de matricules qu'on va remplir avec la subscription
   listeMatricules = [];
 
   // Boolean de recherche pour afficher ou non le menu
-  rechercheEnCours: boolean = false;
+  rechercheEnCours = false;
   unObjetListeDeCollegues: Collegue[];
 
-  //Création d'une Subscription pour pouvoir la détruire à la fin
+  // Création d'une Subscription pour pouvoir la détruire à la fin
   listeMatriculesSubscription: Subscription;
 
   constructor(private dataService: DataService) { }
@@ -35,10 +35,15 @@ export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
     this.rechercheEnCours = true;
     this.listeMatriculesSubscription = this.dataService.rechercherParNom(nomSaisi)
       .subscribe(
+        // Cas 1 (Valeur de retour)
         (lesMatriculesDeLObservable) => {
           this.listeMatricules = lesMatriculesDeLObservable;
-        }, (err) => {
+        }, // Cas 2 (Cas erreur)
+        (err) => {
           this.msgErreur = 'Erreur : ' + err;
+        }, // Cas 3 (Ok)
+        () => {
+          console.log('Tout est ok ! ');
         }
       );
   }
@@ -54,7 +59,7 @@ export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
     this.dataService.recupererCollegueCourant(matricule);
   }
 
-  //Destruction de la subscription
+  // Destruction de la subscription
   ngOnDestroy() {
     this.listeMatriculesSubscription.unsubscribe();
   }

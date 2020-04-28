@@ -2,30 +2,33 @@ import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { environment } from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  // Le subject est privé, on le rend "public" avec "abonnementCollegueEnCours()"
   private subCollegueEnCours = new Subject<Collegue>();
-  URL_BACKEND = environment.backendUrl;
 
   constructor(private http: HttpClient) { }
 
+  // Observable auquel on pourra souscricre dans collegue.component
   abonnementCollegueEnCours(): Observable<Collegue> {
     return this.subCollegueEnCours.asObservable();
   }
 
-
+  // On met en place un observable qui retourne la liste des matricules correspondant.
+  // Observable auquel on pourra souscrire par la suite, pas un .subscribe
   rechercherParNom(nomRecherche: string): Observable<string[]> {
     return this.http.get<string[]>(`https://digicapi.herokuapp.com/collegues?nom=${nomRecherche}`);
   }
 
 
-    recupererCollegueCourant(matriculeCollegue: string) {
-    this.http.get<Collegue>(`https://digicapi.herokuapp.com/collegues/${matriculeCollegue}`).subscribe(collegue => {
+  // On met en place un obserable auquel on souscris, pour retourner les informations du collaborateur, en fonction de son matricule
+  recupererCollegueCourant(matriculeCollegue: string) {
+    this.http.get<Collegue>(`https://digicapi.herokuapp.com/collegues/${matriculeCollegue}`).subscribe(
+      (collegue) => {
       this.subCollegueEnCours.next(collegue);
     });
   }
