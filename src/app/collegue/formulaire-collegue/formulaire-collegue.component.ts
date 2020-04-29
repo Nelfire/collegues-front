@@ -17,14 +17,12 @@ export class FormulaireCollegueComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getEtat() {
-    return 'ng-pristine';
-  }
   valider() {
     console.log('saisie', this.collegueSaisie);
     this.message = 'Formulaire envoye !'
 
     // Disparition du message de validation au bout de 2 secondes
+    // On vide aussi les champs
     setTimeout(() => {
       this.message = '';
       this.collegueSaisie.nom = '';

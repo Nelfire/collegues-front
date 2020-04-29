@@ -15,8 +15,9 @@ import { FormulaireCollegueComponent } from './collegue/formulaire-collegue/form
 
 const appRoute: Routes = [
   {path: 'listerCollegues', component: ListerColleguesComponent},
+  {path: 'ajouterCollegue', component: FormulaireCollegueComponent},
   {path: '', component: ListerColleguesComponent}
-]
+];
 
 @NgModule({
   declarations: [

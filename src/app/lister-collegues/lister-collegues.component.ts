@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lister-collegues.component.css']
 })
 export class ListerColleguesComponent implements OnInit {
+
   constructor() { }
 
   ngOnInit(): void {
