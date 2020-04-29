@@ -1,4 +1,4 @@
-<div class="text-center col-5 justify-content-md-center">
+<div class="d-flex text-center col-12 justify-content-md-center">
 	<div style="background-color: #0052a761;border-radius: 4%; padding: 20px;">
 		<form #etatFormulaire="ngForm">
 			<div class="form-group">
@@ -59,7 +59,9 @@
 				L'url photo est requis
 			</div>
 		</div>
-		{{message}}
+		<div class="alert alert-success" role="success" *ngIf="message">
+			{{message}}
+		</div>
 
 	</div>
 </div>

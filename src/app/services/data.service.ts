@@ -36,6 +36,12 @@ export class DataService {
       });
   }
 
+    // On met en place un obserable auquel on souscris, pour retourner
+  // les informations du collaborateur, en fonction de son matricule
+  recupererListeCollegue() {
+    return this.http.get<Collegue[]>(`https://digicapi.herokuapp.com/collegues/`);
+  }
+
 
   ajouterCollegue(nom: string, prenoms: string, email: string, dateDeNaissance: Date, photoUrl: string): Observable<Collegue> {
     return this.http.post<Collegue>(`https://digicapi.herokuapp.com/collegues/`,

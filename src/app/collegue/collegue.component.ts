@@ -2,6 +2,7 @@ import { Collegue } from '../models/Collegue';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collegue',
@@ -17,7 +18,7 @@ export class CollegueComponent implements OnInit, OnDestroy {
   // Création d'une Subscription pour pouvoir la détruire à la fin
   collegueSubscription: Subscription;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private router: Router) {
   }
 
   // On souscris à l'observable "abonnementCollegueEnCours" et on peuple la variable locale "col" des données récupérées
@@ -42,6 +43,10 @@ export class CollegueComponent implements OnInit, OnDestroy {
   // Bouton "modifier" changement formulaire (inutile pour le moment)
   modifier() {
     this.mode = 'modification';
+  }
+
+  retour() {
+    this.router.navigate(['listerCollegues']);
   }
 
   // Destruction de la subscription

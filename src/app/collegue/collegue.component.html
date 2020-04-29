@@ -1,6 +1,4 @@
-<div class="row" *ngIf="col">
-	<!-- <div class="col-xs-12 col-sm-6 col-md-6">
-		<div class="well well-sm"> -->
+<div class="row col-6" *ngIf="col">
 	<div class="col-sm-6 col-md-4">
 		<img src="{{col.photoUrl}}" alt="" class="rounded img-fluid" />
 	</div>
@@ -56,8 +54,8 @@
 			<button (click)="modifier()" type="button" class="btn btn-primary" *ngIf="mode == 'creation'">
 				Modifier
 			</button>
-			<button type="button" class="btn btn-primary" *ngIf="mode == 'creation'">
-				<a href="detailCollegue/{{col.matricule}}">Details</a>
+			<button (click)="retour()" type="button" class="btn btn-primary">
+				Retour
 			</button>
 		</div>
 		<h2 class="text-success">{{messageValidation}}</h2>

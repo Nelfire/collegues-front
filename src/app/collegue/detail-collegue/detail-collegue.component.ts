@@ -10,23 +10,22 @@ import { Collegue } from 'src/app/models/Collegue';
 })
 export class DetailCollegueComponent implements OnInit {
 
-  collegueRecupere: Collegue = new Collegue('','','','',new Date(),'');
-  message: string;
+  collegueRecupere: Collegue;
+
   constructor(private route: ActivatedRoute,
-    private dataService: DataService) { }
+              private dataService: DataService) { }
 
   ngOnInit(): void {
 
+    // Récupérer ID passé dans l'url
     const id = this.route.snapshot.params['id'];
 
-    this.message = id;
 
     this.dataService.recupererCollegueCourant(id);
-
     this.dataService.abonnementCollegueEnCours()
       .subscribe(collegueSelect => {
         this.collegueRecupere = collegueSelect;
-      })
+      });
 
   }
 

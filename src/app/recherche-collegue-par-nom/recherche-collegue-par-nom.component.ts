@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Collegue } from '../models/Collegue';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
@@ -22,7 +23,7 @@ export class RechercheCollegueParNomComponent implements OnInit {
   rechercheEnCours = false;
   unObjetListeDeCollegues: Collegue[];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -59,6 +60,7 @@ export class RechercheCollegueParNomComponent implements OnInit {
   // Appel à l'observable "recupererCollegueCourant"
   recupererCollegue(matricule: string) {
     this.dataService.recupererCollegueCourant(matricule);
+    this.router.navigate([`detailCollegue/${matricule}`]);
   }
 
 }

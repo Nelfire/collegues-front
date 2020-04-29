@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
+import { Collegue } from '../models/Collegue';
 
 @Component({
   selector: 'app-gallerie',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GallerieComponent implements OnInit {
 
-  constructor() { }
+  messageErreur: string;
+  listeCollegues: Collegue[];
+  constructor(private dataService : DataService) { }
 
   ngOnInit(): void {
+    this.dataService.recupererListeCollegue().subscribe(
+      (collegues) => {
+        this.listeCollegues = collegues;
+      }, (error) => {
+        this.messageErreur = error;
+        console.log('Erreur');
+      }
+    )
+  }
+
+  voirDetails(matricule: string) {
+
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Collegue } from 'src/app/models/Collegue';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulaire-collegue',
@@ -17,24 +18,26 @@ export class FormulaireCollegueComponent implements OnInit {
   collegueSaisie: Collegue = new Collegue('', '', '', '', new Date(), '');
   message: string;
   ajouterCollegueSubscription: Subscription;
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   valider() {
     console.log('saisie', this.collegueSaisie);
-    this.message = 'Formulaire envoye !'
+    this.message = 'Formulaire envoye !';
 
     // Disparition du message de validation au bout de 2 secondes
     // On vide aussi les champs
     setTimeout(() => {
       this.message = '';
-      this.collegueSaisie.nom = '';
-      this.collegueSaisie.prenoms = '';
-      this.collegueSaisie.email = '';
-      this.collegueSaisie.dateDeNaissance = null;
-      this.collegueSaisie.photoUrl = '';
+      // this.collegueSaisie.nom = '';
+      // this.collegueSaisie.prenoms = '';
+      // this.collegueSaisie.email = '';
+      // this.collegueSaisie.dateDeNaissance = null;
+      // this.collegueSaisie.photoUrl = '';
+      //window.location.reload();
+      // this.router.navigate(['ajouterCollegue']);
     }, 2000)
 
     const nom: string = this.collegueSaisie.nom;
