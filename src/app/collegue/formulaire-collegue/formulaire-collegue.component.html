@@ -32,10 +32,15 @@
 		<button class="btn btn-success" *ngIf="etatFormulaire.valid" (click)="valider()">Valider</button>
 		<button class="btn btn-success" *ngIf="etatFormulaire.invalid" disabled>Formulaire incomplet</button>
 	</form>
-	<div *ngIf="etatFormulaire.invalid" class="text-danger font-weight-bold">
-		Erreur de saisie :-(
-	</div>
-	<div class="alert alert-danger" role="alert">
+
+	<div class="alert alert-danger" role="alert" *ngIf="(etatNom.dirty && etatNom.invalid) || 
+	(etatPrenom.dirty && etatPrenom.invalid) ||
+	(etatDateDeNaissance.dirty && etatDateDeNaissance.invalid) ||
+	(etatEmail.dirty && etatEmail.invalid) ||
+	(etatPhotoUrl.dirty && etatPhotoUrl.invalid)">
+		<div *ngIf="etatFormulaire.invalid" class="text-danger font-weight-bold">
+			Erreur de saisie :-(
+		</div>
 		<div *ngIf="etatNom.dirty && etatNom.invalid">
 			Le nom est requis
 		</div>
