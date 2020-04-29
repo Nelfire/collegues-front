@@ -24,8 +24,4 @@ export class GallerieComponent implements OnInit {
     )
   }
 
-  voirDetails(matricule: string) {
-
-  }
-
 }
