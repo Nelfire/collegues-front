@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListerColleguesComponent implements OnInit {
 
+  modeCreation = 'false';
+  modeEdition = 'false';
+  //modeCreation = 'false';
   constructor() { }
 
   ngOnInit(): void {

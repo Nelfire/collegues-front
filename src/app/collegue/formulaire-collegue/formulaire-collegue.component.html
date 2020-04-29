@@ -1,61 +1,65 @@
-<div>
-	<form #etatFormulaire="ngForm">
-		<div class="form-group">
-			<label for="nom">Nom</label>
-			<input id="nom" type="text" name="nom" [(ngModel)]="collegueSaisie.nom" #etatNom="ngModel" required
-				class="form-control" />
-		</div>
+<div class="text-center col-5 justify-content-md-center">
+	<div style="background-color: #0052a761;border-radius: 4%; padding: 20px;">
+		<form #etatFormulaire="ngForm">
+			<div class="form-group">
+				<label for="nom">Nom</label>
+				<input id="nom" type="text" name="nom" [(ngModel)]="collegueSaisie.nom" #etatNom="ngModel" required
+					class="form-control" />
+			</div>
 
-		<div class="form-group">
-			<label for="prenoms">Prenom</label>
-			<input id="prenoms" type="text" name="prenoms" [(ngModel)]="collegueSaisie.prenoms" #etatPrenom="ngModel"
-				required class="form-control" />
-		</div>
+			<div class="form-group">
+				<label for="prenoms">Prenom</label>
+				<input id="prenoms" type="text" name="prenoms" [(ngModel)]="collegueSaisie.prenoms"
+					#etatPrenom="ngModel" required class="form-control" />
+			</div>
 
-		<div class="form-group">
-			<label for="dateDeNaissance">Date de naissance</label>
-			<input id="dateDeNaissance" type="date" name="dateDeNaissance" [(ngModel)]="collegueSaisie.dateDeNaissance"
-				#etatDateDeNaissance="ngModel" required class="form-control" />
-		</div>
+			<div class="form-group">
+				<label for="dateDeNaissance">Date de naissance</label>
+				<input id="dateDeNaissance" type="date" name="dateDeNaissance"
+					[(ngModel)]="collegueSaisie.dateDeNaissance" #etatDateDeNaissance="ngModel" required
+					class="form-control" />
+			</div>
 
-		<div class="form-group">
-			<label for="email">Email</label>
-			<input id="email" type="text" name="email" [(ngModel)]="collegueSaisie.email" #etatEmail="ngModel" required
-				class="form-control" />
-		</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input id="email" type="text" name="email" [(ngModel)]="collegueSaisie.email" #etatEmail="ngModel"
+					required class="form-control" />
+			</div>
 
-		<div class="form-group">
-			<label for="photoUrl">Photo Url</label>
-			<input id="photoUrl" type="text" name="photoUrl" [(ngModel)]="collegueSaisie.photoUrl"
-				#etatPhotoUrl="ngModel" required class="form-control" minlength="7" />
-		</div>
-		<button class="btn btn-success" *ngIf="etatFormulaire.valid" (click)="valider()">Valider</button>
-		<button class="btn btn-success" *ngIf="etatFormulaire.invalid" disabled>Formulaire incomplet</button>
-	</form>
+			<div class="form-group">
+				<label for="photoUrl">Photo Url</label>
+				<input id="photoUrl" type="text" name="photoUrl" [(ngModel)]="collegueSaisie.photoUrl"
+					#etatPhotoUrl="ngModel" required class="form-control" minlength="7" />
+			</div>
+			<button class="btn btn-success" *ngIf="etatFormulaire.valid" (click)="valider()">Valider</button>
+			<button class="btn btn-success" *ngIf="etatFormulaire.invalid" disabled>Formulaire incomplet</button>
+		</form>
 
-	<div class="alert alert-danger" role="alert" *ngIf="(etatNom.dirty && etatNom.invalid) || 
+		<div class="alert alert-danger" role="alert" *ngIf="(etatNom.dirty && etatNom.invalid) || 
 	(etatPrenom.dirty && etatPrenom.invalid) ||
 	(etatDateDeNaissance.dirty && etatDateDeNaissance.invalid) ||
 	(etatEmail.dirty && etatEmail.invalid) ||
 	(etatPhotoUrl.dirty && etatPhotoUrl.invalid)">
-		<div *ngIf="etatFormulaire.invalid" class="text-danger font-weight-bold">
-			Erreur de saisie :-(
+			<div *ngIf="etatFormulaire.invalid" class="text-danger font-weight-bold">
+				Erreur de saisie :-(
+			</div>
+			<div *ngIf="etatNom.dirty && etatNom.invalid">
+				Le nom est requis
+			</div>
+			<div *ngIf="etatPrenom.dirty && etatPrenom.invalid">
+				Le prenom est requis
+			</div>
+			<div *ngIf="etatDateDeNaissance.dirty && etatDateDeNaissance.invalid">
+				La date de naissance est requise
+			</div>
+			<div *ngIf="etatEmail.dirty && etatEmail.invalid">
+				L'email est requis
+			</div>
+			<div *ngIf="etatPhotoUrl.dirty && etatPhotoUrl.invalid">
+				L'url photo est requis
+			</div>
 		</div>
-		<div *ngIf="etatNom.dirty && etatNom.invalid">
-			Le nom est requis
-		</div>
-		<div *ngIf="etatPrenom.dirty && etatPrenom.invalid">
-			Le prenom est requis
-		</div>
-		<div *ngIf="etatDateDeNaissance.dirty && etatDateDeNaissance.invalid">
-			La date de naissance est requise
-		</div>
-		<div *ngIf="etatEmail.dirty && etatEmail.invalid">
-			L'email est requis
-		</div>
-		<div *ngIf="etatPhotoUrl.dirty && etatPhotoUrl.invalid">
-			L'url photo est requis
-		</div>
+		{{message}}
+
 	</div>
-	{{message}}
 </div>

@@ -1,64 +1,65 @@
 <div class="row" *ngIf="col">
 	<!-- <div class="col-xs-12 col-sm-6 col-md-6">
 		<div class="well well-sm"> -->
-	<div class="row">
-		<div class="col-sm-6 col-md-4">
-			<img src="{{col.photoUrl}}" alt="" class="rounded img-fluid" />
-		</div>
-		<div class="col-sm-6 col-md-8">
+	<div class="col-sm-6 col-md-4">
+		<img src="{{col.photoUrl}}" alt="" class="rounded img-fluid" />
+	</div>
+	<div class="col-sm-6 col-md-8">
 
-			<i class="glyphicon glyphicon-pushpin"></i>
-			<label> <b>Matricule : </b></label>
-			{{col.matricule}}
-			<br />
+		<i class="glyphicon glyphicon-pushpin"></i>
+		<label> <b>Matricule : </b></label>
+		{{col.matricule}}
+		<br />
 
-			<i class="bi bi-alarm-fill"></i>
-			<label> <b>Nom :</b></label>
-			{{col.nom}}
-			<br />
+		<i class="bi bi-alarm-fill"></i>
+		<label> <b>Nom :</b></label>
+		{{col.nom}}
+		<br />
 
-			<i class="glyphicon glyphicon-user"></i>
-			<label> <b>Prenom :</b></label>
-			{{col.prenoms}}
-			<br />
+		<i class="glyphicon glyphicon-user"></i>
+		<label> <b>Prenom :</b></label>
+		{{col.prenoms}}
+		<br />
 
-			<i class="glyphicon glyphicon-hourglass"></i>
-			<label> <b>Date de naissance :</b></label>
-			{{col.dateDeNaissance | date:'dd/MM/yyyy'}}
-			<br />
+		<i class="glyphicon glyphicon-hourglass"></i>
+		<label> <b>Date de naissance :</b></label>
+		{{col.dateDeNaissance | date:'dd/MM/yyyy'}}
+		<br />
 
-			<i class="glyphicon glyphicon-envelope"></i>
-			<label> <b>Email :</b></label>
-			<ng-container *ngIf="mode == 'creation'; else blocModificationEmail">
-				{{col.email}}
-			</ng-container>
-			<ng-template #blocModificationEmail>
-				<input class="form-control" type="text" value="{{col.email}}">
-			</ng-template>
-			<br />
+		<i class="glyphicon glyphicon-envelope"></i>
+		<label> <b>Email :</b></label>
+		<ng-container *ngIf="mode == 'creation'; else blocModificationEmail">
+			{{col.email}}
+		</ng-container>
+		<ng-template #blocModificationEmail>
+			<input class="form-control" type="text" value="{{col.email}}">
+		</ng-template>
+		<br />
 
-			<i class="glyphicon glyphicon-envelope"></i>
-			<label> <b>Photo URL :</b></label>
-			<ng-container *ngIf="mode == 'creation'; else blocModificationPhoto">
-				{{col.photoUrl}}
-			</ng-container>
-			<ng-template #blocModificationPhoto>
-				<textarea class="form-control" id="url" name="url" rows="5" cols="33">
+		<i class="glyphicon glyphicon-envelope"></i>
+		<label> <b>Photo URL :</b></label>
+		<ng-container *ngIf="mode == 'creation'; else blocModificationPhoto">
+			{{col.photoUrl}}
+		</ng-container>
+		<ng-template #blocModificationPhoto>
+			<textarea class="form-control" id="url" name="url" rows="5" cols="33">
 							{{col.photoUrl}}
 						</textarea>
-			</ng-template>
-			<br />
+		</ng-template>
+		<br />
 
-			<!-- Split button -->
-			<div class="btn-group">
-				<button (click)="valider()" type="button" class="btn btn-primary" *ngIf="mode == 'modification'">
-					Valider 
-				</button>
-				<button (click)="modifier()" type="button" class="btn btn-primary" *ngIf="mode == 'creation'"> 
-					Modifier
-				</button>
-			</div>
-			<h2 class="text-success">{{messageValidation}}</h2>
+		<!-- Split button -->
+		<div class="btn-group">
+			<button (click)="valider()" type="button" class="btn btn-primary" *ngIf="mode == 'modification'">
+				Valider
+			</button>
+			<button (click)="modifier()" type="button" class="btn btn-primary" *ngIf="mode == 'creation'">
+				Modifier
+			</button>
+			<button type="button" class="btn btn-primary" *ngIf="mode == 'creation'">
+				<a href="detailCollegue/{{col.matricule}}">Details</a>
+			</button>
 		</div>
+		<h2 class="text-success">{{messageValidation}}</h2>
 	</div>
 </div>

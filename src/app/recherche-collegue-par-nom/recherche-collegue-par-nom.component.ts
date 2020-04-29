@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Collegue } from '../models/Collegue';
-import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -9,7 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './recherche-collegue-par-nom.component.html',
   styleUrls: ['./recherche-collegue-par-nom.component.css']
 })
-export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
+export class RechercheCollegueParNomComponent implements OnInit {
 
   collegues: Collegue[];
 
@@ -23,9 +22,6 @@ export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
   rechercheEnCours = false;
   unObjetListeDeCollegues: Collegue[];
 
-  // Création d'une Subscription pour pouvoir la détruire à la fin
-  listeMatriculesSubscription: Subscription;
-
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -34,7 +30,7 @@ export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
   // On souscris à l'observable "rechercherParNom" et on peuple l'array local "listeMatricules" des données récupérées
   rechercher(nomSaisi: string) {
     this.rechercheEnCours = true;
-    this.listeMatriculesSubscription = this.dataService.rechercherParNom(nomSaisi)
+    this.dataService.rechercherParNom(nomSaisi)
       .subscribe(
         // Cas 1 (Valeur de retour)
         (lesMatriculesDeLObservable) => {
@@ -65,8 +61,4 @@ export class RechercheCollegueParNomComponent implements OnInit, OnDestroy {
     this.dataService.recupererCollegueCourant(matricule);
   }
 
-  // Destruction de la subscription
-  ngOnDestroy() {
-    this.listeMatriculesSubscription.unsubscribe();
-  }
 }
