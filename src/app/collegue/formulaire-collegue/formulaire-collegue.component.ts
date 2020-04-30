@@ -36,7 +36,7 @@ export class FormulaireCollegueComponent implements OnInit {
       // this.collegueSaisie.email = '';
       // this.collegueSaisie.dateDeNaissance = null;
       // this.collegueSaisie.photoUrl = '';
-      //window.location.reload();
+      window.location.reload();
       // this.router.navigate(['ajouterCollegue']);
     }, 2000)
 
